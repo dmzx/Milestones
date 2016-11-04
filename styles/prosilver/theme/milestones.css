@@ -1,0 +1,117 @@
+li { 
+	list-style: none;
+}
+
+.milestone-container{
+	max-width:auto;
+	margin:0 auto;
+	padding:.8px 0
+}
+
+.table-list{
+	color:#999;
+	background-color:#f8f8f8;
+	border:1px solid #e8e8e8;
+	border-top:none
+}
+
+.table-list-item{
+	display:table;
+	table-layout:fixed;
+	width:100%;
+	border-top:1px solid #e8e8e8
+}
+
+.table-list-cell{
+	position:relative;
+	display:table-cell;
+	padding:15px 20px;
+	font-size:12px;
+	vertical-align:top;
+	border-top:1px solid #eee
+}
+
+.table-list-milestones .stat{
+	display:inline-block;
+	margin:0;
+	height:auto;
+	width:auto;
+	font-size:14px;
+	font-weight:bold;
+	line-height:1.2;
+	color:#555;
+	border:none!important;
+	white-space:nowrap
+}
+
+.table-list-milestones .stat+.stat{
+	margin-left:15px
+}
+
+.table-list-milestones .stat-label{
+	margin-left:4px;
+	font-weight:normal;
+	color:#767676
+}
+
+.milestone-title-link{
+	margin-top:0;
+	margin-bottom:5px;
+	font-size:24px;
+	font-weight:normal;
+	line-height:1.2
+}
+
+.milestone-title-link a{
+	color:#148fcf;
+	text-decoration:none
+}
+
+.milestone-title-link a:hover{
+	color:#4078c0;
+	text-decoration:underline
+}
+
+.milestone-progress{
+	width:auto
+}
+
+.milestone-progress .progress-bar{
+	margin-top:7px;
+	margin-bottom:12px
+}
+
+#milestones .progress-bar{
+	display:block;
+	float:none;
+	width:auto;
+	height:15px;
+	overflow:hidden;
+	background:#e8e8e8;
+	border-radius:3px;
+	box-shadow:none;
+}
+
+#milestones .progress-bar .progress{
+	height:100%;
+	display:block;
+	background:#6cc644
+}
+
+.milestone-meta-item{
+	display:inline-block;
+	margin-right:10px
+}
+
+.milestone-description-plaintext{
+	display:none
+}
+
+@media only screen and (max-width:999px) {
+	.table-list-cell{display:block}
+	.milestone-progress{width:auto;border:none!important
+}
+
+#milestones .progress-bar{
+	margin-top:-13px
+}

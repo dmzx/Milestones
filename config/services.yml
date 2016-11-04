@@ -1,0 +1,6 @@
+services:
+    dmzx.milestones.listener:
+        class: dmzx\milestones\event\main_listener
+        arguments:
+        tags:
+            - { name: event.listener }

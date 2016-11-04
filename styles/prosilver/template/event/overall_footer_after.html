@@ -1,0 +1,57 @@
+<!-- IF S_USER_LOGGED_IN -->
+<!-- INCLUDEJS toggle.js -->
+<script type="text/javascript" src="./ext/dmzx/milestones/styles/prosilver/template/repositories.js"></script>
+<script>
+	var showText = '{LA_MILESTONES_VIEW}';
+	var hideText = '{LA_MILESTONES_HIDE}';
+</script>
+
+<script type="text/javascript">
+	loadRepositories(repositories);
+
+	function loadRepositories(repositories) {
+		$.each(repositories, function(index, value) {
+			$('#repositories').append(
+				'<li id="'+value.id+'">' +
+					'<h3>'+value.id+' {LA_MILESTONES_TITLE} <small>' +
+						'<a target="_blank" href="https://github.com/'+value.path+'/" title>{LA_MILESTONES_VIA_GITHUB}</a></small> <i class="icon fa fa-github" style="font-size:16px"></i> ' +
+					'</h3>' +
+					'<div class="toggle"><p><ul class="milestones"></ul></p>' +
+				'</li>'
+			);
+			refreshData(value.id, value.path);
+		});
+	}
+	function refreshData(id, path) {
+		var element = $('#'+id);
+		var milestones = $('.milestones', element);
+
+		$.get('https://api.github.com/repos/'+path+'/milestones?state=open&sort=completeness&direction=asc', function(data) {
+			milestones.empty();
+			$.each(data, function(index, value){
+				var open = Number(value.open_issues);
+				var closed = Number(value.closed_issues);
+				var updated = new Date(value.updated_at);
+				var progress = (open+closed != 0) ? Math.round(closed / (open+closed) * 10000)/100 : 0;
+				var milestone =
+					'<li>'+
+						'<div id="milestones" class="milestone-content"><div class="row"><div class="col-md-6"><div class="milestone-tab" id="phpbb-milestones"><div class="milestone-container"><div class="table-list table-list-bordered table-list-milestones js-navigation-container js-active-navigation-container"><div class="table-list-item milestone notdue"><div class="table-list-cell milestone-title"><h2 class="milestone-title-link"><a href="'+value.html_url+'">'+value.title+'</a></h2>'+
+						'<div class="milestone-meta"><span class="milestone-meta-item"></i><svg aria-hidden="true"	height="16"	width="14"><i class="icon fa fa-clock-o"></i></svg> {LA_MILESTONES_LAST_UPDATED} '+formatDate(updated)+'</span></div></div>'+
+						'<div class="table-list-cell milestone-progress"><span class="progress-bar progress-bar-small"><span class="progress" style="width:'+progress+'%">&nbsp;</span></span><div class="stats"><div class="stat"><span class="progress-percent">'+progress+'%</span><span class="stat-label">{LA_MILESTONES_COMPLETE}</span></div><div class="stat">'+open+'<span class="stat-label">{LA_MILESTONES_OPEN}</span></div><div class="stat">'+closed+'<span class="stat-label">{LA_MILESTONES_CLOSED}</span></div></div></div>'+
+						'</div></div></div></div></div></div></div>'+
+					'</li>';
+				milestones.append(milestone);
+			});
+		}).done(function() {
+			if(milestones.html() == '')
+				milestones.append('<li>{LA_MILESTONES_NO_REPOSITORY}</li>');
+		});
+	}
+
+	function formatDate(date) {
+		var month = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
+		var day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();
+		return day+'.'+month+'.'+date.getFullYear();
+	}
+</script>
+<!-- ENDIF -->
