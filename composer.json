@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "Adds Milestones to your forum",
 	"homepage": "http://www.dmzx-web.net",
-	"version": "1.0.0",
-	"time": "2016-11-02",
+	"version": "1.0.1",
+	"time": "2016-11-06",
 	"keywords": [
 		"phpbb",
 		"extension",

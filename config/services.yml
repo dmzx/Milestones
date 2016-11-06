@@ -1,6 +1,42 @@
+imports:
+    - { resource: tables.yml }
+parameters:
+    dmzx.milestones.version_data:
+        author: dmzx
+        title: Milestones
+        version: milestones_version
+        file:
+            - www.dmzx-web.net
+            - /versions
+            - milestones_version.json
 services:
-    dmzx.milestones.listener:
-        class: dmzx\milestones\event\main_listener
+    dmzx.milestones.admin.controller:
+        class: dmzx\milestones\controller\admin_controller
         arguments:
+            - '@config'
+            - '@template'
+            - '@log'
+            - '@user'
+            - '@service_container'
+            - '@dbal.conn'
+            - '@request'
+            - '%tables.milestones_table%'
+    dmzx.milestones.version.check:
+        class: dmzx\milestones\includes\version_check
+        scope: prototype
+        arguments:
+            - '%dmzx.milestones.version_data%'
+            - '@config'
+            - '@version_helper'
+            - '@template'
+            - '@user'
+    dmzx.milestones.listener:
+        class: dmzx\milestones\event\listener
+        arguments:
+            - '@template'
+            - '@user'
+            - '@dbal.conn'
+            - '@request'
+            - '%tables.milestones_table%'
         tags:
             - { name: event.listener }

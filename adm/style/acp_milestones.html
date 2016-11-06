@@ -1,0 +1,83 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_MILESTONES_TITLE}</h1>
+
+<!-- BEGIN ext_update -->
+<fieldset>
+	<legend>{L_MILESTONES_VERSION_CHECK}</legend>
+	<p style="font-weight: bold; color: <!-- IF ext_update.MILESTONES_S_UP_TO_DATE -->#228822<!-- ELSE -->#BC2A4D<!-- ENDIF -->;">{ext_update.MILESTONES_UP_TO_DATE}</p>
+	<dl>
+		<dt><label>{L_MILESTONES_CURRENT_VERSION}{L_COLON}</label></dt>
+		<dd><strong>{ext_update.MILESTONES_CURRENT_VERSION}</strong></dd>
+	</dl>
+	<dl>
+		<dt><label>{L_MILESTONES_LATEST_VERSION}{L_COLON}</label></dt>
+		<dd><strong>{ext_update.MILESTONES_LATEST_VERSION}</strong></dd>
+	</dl>
+	<dl>
+		<dt><label>{L_MILESTONES_AUTHOR}{L_COLON}</label></dt>
+		<dd><strong>{ext_update.MILESTONES_AUTHOR}</strong></dd>
+	</dl>
+	<!-- IF not ext_update.MILESTONES_S_UP_TO_DATE -->
+		<dl>
+			<dt><label>{L_MILESTONES_DOWNLOAD_LATEST}{L_COLON}</label></dt>
+			<dd><strong><a href="{ext_update.MILESTONES_DOWNLOAD}">{L_MILESTONES_DOWNLOAD} {ext_update.MILESTONES_TITLE} {ext_update.MILESTONES_LATEST_VERSION}</a></strong></dd>
+		</dl>
+		<dl>
+			<dt><label>{L_MILESTONES_ANNOUNCEMENT_TOPIC}{L_COLON}</label></dt>
+			<dd><strong><a href="{ext_update.MILESTONES_ANNOUNCEMENT}">{L_MILESTONES_RELEASE_ANNOUNCEMENT}</a></strong></dd>
+		</dl>
+	<!-- ENDIF -->
+</fieldset>
+<!-- END ext_update -->
+
+<form id="acp_milestones" method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_ACP_MILESTONES_CONFIG}</legend>
+		<dl>
+			<dt>
+				<label for="milestones_enable">{L_MILESTONES_ENABLE}{L_COLON}</label><br />
+				<span>{L_MILESTONES_ENABLE_EXPLAIN}</span></dt>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" id="milestones_enable" name="milestones_enable" value="1" <!-- IF MILESTONES_ENABLE -->checked="checked"<!-- ENDIF -->/> {L_YES}</label>
+				<label><input type="radio" class="radio" name="milestones_enable" value="0" <!-- IF not MILESTONES_ENABLE -->checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt>
+				<label for="milestones_respository">{L_MILESTONES_REPOSITORY}{L_COLON}</label><br />
+				<span>{L_MILESTONES_REPOSITORY_EXPLAIN}</span>
+			</dt>
+			<dd>
+				<b>{L_MILESTONES_REPOSITORY} <span style="margin-left:190px;">{L_MILESTONES_REPOSITORY_TEXT}</span></b>
+				<!-- BEGIN milestones -->
+				<p id="milestones">
+					<input name="milestones[]" type="text" value="{milestones.MILESTONES}" size="40" placeholder="{L_MILESTONES_PLACEHOLDER}">
+					<input name="milestones_text[]" type="text" value="{milestones.MILESTONES_TEXT}" size="30" placeholder="{L_MILESTONES_PLACEHOLDER_NAME}">
+				</p>
+				<!-- END milestones -->
+				<dd>
+					<input value="{L_MILESTONES_MORE_LINKS}" onclick="add_this('milestones').value" type="button">
+				</dd>
+			</dd>
+		</dl>
+	</fieldset>
+	<p class="submit-buttons">
+		{S_FORM_TOKEN}
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<script>
+function add_this(id)
+{
+	var tableRow = document.getElementById(id);
+	var tableRowClone = tableRow.cloneNode(true);
+	$('input', tableRowClone).val("");
+	tableRow.parentNode.appendChild(tableRowClone, tableRow.previousSibling);
+}
+</script>
+
+<!-- INCLUDE overall_footer.html -->

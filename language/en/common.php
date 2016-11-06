@@ -16,7 +16,6 @@ if (empty($lang) || !is_array($lang))
 {
 	$lang = array();
 }
-
 // DEVELOPERS PLEASE NOTE
 //
 // All language files should use UTF-8 as their encoding and the files must not contain a BOM.
@@ -29,8 +28,9 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
-// Some characters for use
+// Some characters you may want to copy&paste:
 // ’ » “ ” …
+//
 
 $lang = array_merge($lang, array(
 	'MILESTONES_TITLE'					=> 'Milestones',
@@ -42,4 +42,29 @@ $lang = array_merge($lang, array(
 	'MILESTONES_VIEW' 					=> '»» view »»',
 	'MILESTONES_HIDE' 					=> '&nbsp;«« hide ««',
 	'MILESTONES_NO_REPOSITORY' 			=> 'No milestones defined in repository',
+	//ACP
+	'ACP_MILESTONES_TITLE'				=> 'Milestones',
+	'ACP_MILESTONES_CONFIG'				=> 'Settings',
+	'MILESTONES_ENABLE'					=> 'Enable Milestones',
+	'MILESTONES_ENABLE_EXPLAIN'			=> 'Enable milestones on index.',
+	'MILESTONES_PLACEHOLDER'			=> 'phpbb/phpbb',
+	'MILESTONES_PLACEHOLDER_NAME'		=> 'phpbb',
+	'MILESTONES_REPOSITORY'				=> 'Repository',
+	'MILESTONES_REPOSITORY_EXPLAIN'		=> 'Add the repository of your choice.',
+	'MILESTONES_REPOSITORY_TEXT'		=> 'Milestone name',
+	'MILESTONES_MORE_LINKS'				=> 'Add repository',
+	'LOG_MILESTONES_SAVE'				=> '<strong>Settings Milestones changed</strong>' ,
+	'MILESTONES_SAVED'					=> 'Settngs saved',
+	'MILESTONES_VERSION'				=> 'Version',
+	'MILESTONES_VERSION_CHECK'			=> 'Milestones Version Check',
+	'MILESTONES_AUTHOR'					=> 'Author',
+	'MILESTONES_ANNOUNCEMENT_TOPIC'		=> 'Release Announcement',
+	'MILESTONES_CURRENT_VERSION'		=> 'Current Version',
+	'MILESTONES_VERSION'				=> 'Version',
+	'MILESTONES_DOWNLOAD_LATEST'		=> 'Download Latest Version',
+	'MILESTONES_DOWNLOAD'				=> 'Download',
+	'MILESTONES_LATEST_VERSION'			=> 'Latest Version',
+	'MILESTONES_NOT_UP_TO_DATE'			=> '%s is not up to date',
+	'MILESTONES_RELEASE_ANNOUNCEMENT'	=> 'Announcement Topic',
+	'MILESTONES_UP_TO_DATE'				=> '%s is up to date',
 ));

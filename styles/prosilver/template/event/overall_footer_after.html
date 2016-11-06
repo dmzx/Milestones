@@ -1,14 +1,18 @@
-<!-- IF S_USER_LOGGED_IN -->
+<!-- IF MILESTONES_ENABLE and S_USER_LOGGED_IN -->
 <!-- INCLUDEJS toggle.js -->
-<script type="text/javascript" src="./ext/dmzx/milestones/styles/prosilver/template/repositories.js"></script>
+
 <script>
+	var repositories = [
+	<!-- BEGIN milestones -->
+	{"id": "{milestones.MILESTONES_TEXT}", "path": "{milestones.MILESTONES}"},
+	<!-- END milestones -->
+];
 	var showText = '{LA_MILESTONES_VIEW}';
 	var hideText = '{LA_MILESTONES_HIDE}';
 </script>
 
 <script type="text/javascript">
 	loadRepositories(repositories);
-
 	function loadRepositories(repositories) {
 		$.each(repositories, function(index, value) {
 			$('#repositories').append(
@@ -25,7 +29,6 @@
 	function refreshData(id, path) {
 		var element = $('#'+id);
 		var milestones = $('.milestones', element);
-
 		$.get('https://api.github.com/repos/'+path+'/milestones?state=open&sort=completeness&direction=asc', function(data) {
 			milestones.empty();
 			$.each(data, function(index, value){
@@ -47,7 +50,6 @@
 				milestones.append('<li>{LA_MILESTONES_NO_REPOSITORY}</li>');
 		});
 	}
-
 	function formatDate(date) {
 		var month = (date.getMonth()+1) < 10 ? '0'+(date.getMonth()+1) : (date.getMonth()+1);
 		var day = date.getDate() < 10 ? '0'+date.getDate() : date.getDate();

@@ -1,0 +1,2 @@
+parameters:
+    tables.milestones_table: %core.table_prefix%milestones
