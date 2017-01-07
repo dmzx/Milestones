@@ -25,6 +25,9 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\request\request */
 	protected $request;
 
+	/** @var phpbb\language\language */
+	protected $language;
+
 	/** @var string */
 	protected $milestones_table;
 
@@ -35,6 +38,7 @@ class listener implements EventSubscriberInterface
 	* @param \phpbb\user							$user
 	* @param \phpbb\db\driver\driver_interface 		$db
 	* @param \phpbb\request\request					$request
+	* @param phpbb\language\language				$language
 	* @param string									$milestones_table
 	*/
 	public function __construct(
@@ -42,35 +46,28 @@ class listener implements EventSubscriberInterface
 		\phpbb\user $user,
 		\phpbb\db\driver\driver_interface $db,
 		\phpbb\request\request $request,
+		\phpbb\language\language $language,
 		$milestones_table)
 	{
 		$this->template 		= $template;
 		$this->user 			= $user;
 		$this->db 				= $db;
 		$this->request 			= $request;
+		$this->language			= $language;
 		$this->milestones_table = $milestones_table;
 	}
 
 	public static function getSubscribedEvents()
 	{
 		return array(
-			'core.user_setup'	=> 'load_language_on_setup',
 			'core.page_header' => 'page_header',
 		);
 	}
 
-	public function load_language_on_setup($event)
-	{
-		$lang_set_ext 	= $event['lang_set_ext'];
-		$lang_set_ext[] = array(
-			'ext_name'	=> 'dmzx/milestones',
-			'lang_set'	=> 'common',
-		);
-		$event['lang_set_ext'] = $lang_set_ext;
-	}
-
 	public function page_header($event)
 	{
+		$this->language->add_lang('common', 'dmzx/milestones');
+
 		$sql = 'SELECT *
 			FROM ' . $this->milestones_table;
 		$result	 = $this->db->sql_query($sql);

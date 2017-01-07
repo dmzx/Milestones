@@ -2,34 +2,7 @@
 
 <h1>{L_ACP_MILESTONES_TITLE}</h1>
 
-<!-- BEGIN ext_update -->
-<fieldset>
-	<legend>{L_MILESTONES_VERSION_CHECK}</legend>
-	<p style="font-weight: bold; color: <!-- IF ext_update.MILESTONES_S_UP_TO_DATE -->#228822<!-- ELSE -->#BC2A4D<!-- ENDIF -->;">{ext_update.MILESTONES_UP_TO_DATE}</p>
-	<dl>
-		<dt><label>{L_MILESTONES_CURRENT_VERSION}{L_COLON}</label></dt>
-		<dd><strong>{ext_update.MILESTONES_CURRENT_VERSION}</strong></dd>
-	</dl>
-	<dl>
-		<dt><label>{L_MILESTONES_LATEST_VERSION}{L_COLON}</label></dt>
-		<dd><strong>{ext_update.MILESTONES_LATEST_VERSION}</strong></dd>
-	</dl>
-	<dl>
-		<dt><label>{L_MILESTONES_AUTHOR}{L_COLON}</label></dt>
-		<dd><strong>{ext_update.MILESTONES_AUTHOR}</strong></dd>
-	</dl>
-	<!-- IF not ext_update.MILESTONES_S_UP_TO_DATE -->
-		<dl>
-			<dt><label>{L_MILESTONES_DOWNLOAD_LATEST}{L_COLON}</label></dt>
-			<dd><strong><a href="{ext_update.MILESTONES_DOWNLOAD}">{L_MILESTONES_DOWNLOAD} {ext_update.MILESTONES_TITLE} {ext_update.MILESTONES_LATEST_VERSION}</a></strong></dd>
-		</dl>
-		<dl>
-			<dt><label>{L_MILESTONES_ANNOUNCEMENT_TOPIC}{L_COLON}</label></dt>
-			<dd><strong><a href="{ext_update.MILESTONES_ANNOUNCEMENT}">{L_MILESTONES_RELEASE_ANNOUNCEMENT}</a></strong></dd>
-		</dl>
-	<!-- ENDIF -->
-</fieldset>
-<!-- END ext_update -->
+{L_MILESTONES_VERSION}{L_COLON} <em>{MILESTONES_VERSION}</em>
 
 <form id="acp_milestones" method="post" action="{U_ACTION}">
 	<fieldset>
@@ -37,7 +10,7 @@
 		<dl>
 			<dt>
 				<label for="milestones_enable">{L_MILESTONES_ENABLE}{L_COLON}</label><br />
-				<span>{L_MILESTONES_ENABLE_EXPLAIN}</span></dt>
+				<span>{L_MILESTONES_ENABLE_EXPLAIN}</span>
 			</dt>
 			<dd>
 				<label><input type="radio" class="radio" id="milestones_enable" name="milestones_enable" value="1" <!-- IF MILESTONES_ENABLE -->checked="checked"<!-- ENDIF -->/> {L_YES}</label>

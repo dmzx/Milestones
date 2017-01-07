@@ -17,7 +17,7 @@
 		$.each(repositories, function(index, value) {
 			$('#repositories').append(
 				'<li id="'+value.id+'">' +
-					'<h3>'+value.id+' {LA_MILESTONES_TITLE} <small>' +
+					'<h3><i class="icon fa fa-road"></i> '+value.id+' {LA_MILESTONES_TITLE} <small>' +
 						'<a target="_blank" href="https://github.com/'+value.path+'/" title>{LA_MILESTONES_VIA_GITHUB}</a></small> <i class="icon fa fa-github" style="font-size:16px"></i> ' +
 					'</h3>' +
 					'<div class="toggle"><p><ul class="milestones"></ul></p>' +

@@ -23,14 +23,14 @@ class admin_controller
 	/** @var \phpbb\user */
 	protected $user;
 
-	/** @var ContainerBuilder */
-	protected $phpbb_container;
-
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
 	/** @var \phpbb\request\request */
 	protected $request;
+
+	/** @var phpbb\language\language */
+	protected $language;
 
 	/** @var string */
 	protected $milestones_table;
@@ -41,32 +41,32 @@ class admin_controller
 	/**
 	 * Constructor
 	 *
-	 * @param \phpbb\config\config											$config
-	 * @param \phpbb\template\template										$template
-	 * @param \\phpbb\log\log_interface										$log
-	 * @param \phpbb\user													$user
-	 * @param \Symfony\Component\DependencyInjection\ContainerInterface 	$phpbb_container
-	 * @param \phpbb\db\driver\driver_interface								$db
-	 * @param \phpbb\request\request										$request
-	 * @param string														$milestones_table
+	 * @param \phpbb\config\config					$config
+	 * @param \phpbb\template\template				$template
+	 * @param \\phpbb\log\log_interface				$log
+	 * @param \phpbb\user							$user
+	 * @param \phpbb\db\driver\driver_interface		$db
+	 * @param \phpbb\request\request				$request
+	 * @param phpbb\language\language				$language
+	 * @param string								$milestones_table
 	 */
 	public function __construct(
 		\phpbb\config\config $config,
 		\phpbb\template\template $template,
 		\phpbb\log\log_interface $log,
 		\phpbb\user $user,
-		$phpbb_container,
 		\phpbb\db\driver\driver_interface $db,
 		\phpbb\request\request $request,
+		\phpbb\language\language $language,
 		$milestones_table)
 	{
 		$this->config 			= $config;
 		$this->template 		= $template;
 		$this->log 				= $log;
 		$this->user 			= $user;
-		$this->phpbb_container 	= $phpbb_container;
 		$this->db 				= $db;
 		$this->request 			= $request;
+		$this->language			= $language;
 		$this->milestones_table = $milestones_table;
 	}
 
@@ -78,9 +78,9 @@ class admin_controller
 	*/
 	public function display_options()
 	{
-		add_form_key('acp_milestones');
+		$this->language->add_lang('milestones_acp', 'dmzx/milestones');
 
-		$this->version_check = $this->phpbb_container->get('dmzx.milestones.version.check');
+		add_form_key('acp_milestones');
 
 		$sql = 'SELECT *
 			FROM '. $this->milestones_table;
@@ -164,8 +164,8 @@ class admin_controller
 		$this->template->assign_vars(array(
 			'U_ACTION'				=> $this->u_action,
 			'MILESTONES_ENABLE'		=> $milestones_data['milestones_enable'],
+			'MILESTONES_VERSION'	=> $this->config['milestones_version'],
 		));
-		$this->version_check->check();
 	}
 
 	/**

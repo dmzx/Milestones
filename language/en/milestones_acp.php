@@ -33,13 +33,14 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'MILESTONES_TITLE'					=> 'Milestones',
-	'MILESTONES_VIA_GITHUB'				=> 'via Github',
-	'MILESTONES_LAST_UPDATED'			=> 'Last updated',
-	'MILESTONES_COMPLETE'				=> 'complete',
-	'MILESTONES_OPEN'					=> 'open',
-	'MILESTONES_CLOSED'					=> 'closed',
-	'MILESTONES_VIEW' 					=> '»» view »»',
-	'MILESTONES_HIDE' 					=> '&nbsp;«« hide ««',
-	'MILESTONES_NO_REPOSITORY' 			=> 'No milestones defined in repository',
+	'MILESTONES_ENABLE'					=> 'Enable Milestones',
+	'MILESTONES_ENABLE_EXPLAIN'			=> 'Enable milestones on index.',
+	'MILESTONES_PLACEHOLDER'			=> 'phpbb/phpbb',
+	'MILESTONES_PLACEHOLDER_NAME'		=> 'phpbb',
+	'MILESTONES_REPOSITORY'				=> 'Repository',
+	'MILESTONES_REPOSITORY_EXPLAIN'		=> 'Add the repository of your choice.',
+	'MILESTONES_REPOSITORY_TEXT'		=> 'Milestone name',
+	'MILESTONES_MORE_LINKS'				=> 'Add repository',
+	'MILESTONES_SAVED'					=> 'Milestones settings saved',
+	'MILESTONES_VERSION'				=> 'Version',
 ));

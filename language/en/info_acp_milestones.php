@@ -33,13 +33,8 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'MILESTONES_TITLE'					=> 'Milestones',
-	'MILESTONES_VIA_GITHUB'				=> 'via Github',
-	'MILESTONES_LAST_UPDATED'			=> 'Last updated',
-	'MILESTONES_COMPLETE'				=> 'complete',
-	'MILESTONES_OPEN'					=> 'open',
-	'MILESTONES_CLOSED'					=> 'closed',
-	'MILESTONES_VIEW' 					=> '»» view »»',
-	'MILESTONES_HIDE' 					=> '&nbsp;«« hide ««',
-	'MILESTONES_NO_REPOSITORY' 			=> 'No milestones defined in repository',
+	'ACP_MILESTONES_TITLE'				=> 'Milestones',
+	'ACP_MILESTONES_CONFIG'				=> 'Settings',
+	// Log
+	'LOG_MILESTONES_SAVE'				=> '<strong>Settings Milestones changed</strong>' ,
 ));

@@ -11,11 +11,6 @@ namespace dmzx\milestones\migrations;
 
 class milestones_install extends \phpbb\db\migration\migration
 {
-	public function effectively_installed()
-	{
-		return isset($this->config['milestones_version']) && version_compare($this->config['milestones_version'], '1.0.1', '>=');
-	}
-
 	static public function depends_on()
 	{
 		return array('\phpbb\db\migration\data\v320\dev');
