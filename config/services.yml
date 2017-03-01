@@ -16,9 +16,7 @@ services:
         class: dmzx\milestones\event\listener
         arguments:
             - '@template'
-            - '@user'
             - '@dbal.conn'
-            - '@request'
             - '@language'
             - '%tables.milestones_table%'
         tags:

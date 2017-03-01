@@ -25,7 +25,7 @@ class milestones_install extends \phpbb\db\migration\migration
 			array('module.add', array(
 				'acp',
 				'ACP_CAT_DOT_MODS',
-				'ACP_MILESTONES_TITLE'
+				'ACP_MILESTONES_TITLE',
 			)),
 			// Add ACP module
 			array('module.add', array(
@@ -33,6 +33,9 @@ class milestones_install extends \phpbb\db\migration\migration
 				'ACP_MILESTONES_TITLE',
 				array(
 					'module_basename'	=> '\dmzx\milestones\acp\acp_milestones_module',
+					'modes'				=> array(
+						'settings',
+					),
 				),
 			)),
 			// Insert data

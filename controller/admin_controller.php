@@ -29,7 +29,7 @@ class admin_controller
 	/** @var \phpbb\request\request */
 	protected $request;
 
-	/** @var phpbb\language\language */
+	/** @var \phpbb\language\language */
 	protected $language;
 
 	/** @var string */
@@ -43,11 +43,11 @@ class admin_controller
 	 *
 	 * @param \phpbb\config\config					$config
 	 * @param \phpbb\template\template				$template
-	 * @param \\phpbb\log\log_interface				$log
+	 * @param \phpbb\log\log_interface				$log
 	 * @param \phpbb\user							$user
 	 * @param \phpbb\db\driver\driver_interface		$db
 	 * @param \phpbb\request\request				$request
-	 * @param phpbb\language\language				$language
+	 * @param \phpbb\language\language				$language
 	 * @param string								$milestones_table
 	 */
 	public function __construct(
@@ -58,7 +58,8 @@ class admin_controller
 		\phpbb\db\driver\driver_interface $db,
 		\phpbb\request\request $request,
 		\phpbb\language\language $language,
-		$milestones_table)
+		$milestones_table
+	)
 	{
 		$this->config 			= $config;
 		$this->template 		= $template;
@@ -96,6 +97,7 @@ class admin_controller
 				));
 			};
 		};
+		$this->db->sql_freeresult($result);
 
 		if (empty($row['milestones']))
 		{
@@ -112,7 +114,7 @@ class admin_controller
 				trigger_error('FORM_INVALID');
 			}
 
-			$this->db->sql_query('TRUNCATE TABLE ' . $this->milestones_table);
+			$this->db->sql_query('DELETE FROM ' . $this->milestones_table);
 
 			if (!$row['milestones_id'])
 			{
@@ -125,13 +127,11 @@ class admin_controller
 
 			$milestones 		= $this->request->variable('milestones', array('' => ''),true);
 			$milestones_text 	= $this->request->variable('milestones_text', array('' => ''),true);
-			$milestones			= array_merge(array_filter($milestones));
+			$milestones			= array_filter($milestones);
 
 			$i = 0;
 			while ($i < count($milestones))
 			{
-				$milestones[$i] = $milestones[$i];
-
 				$sql_ary1 = array(
 					'milestones' 		=> $milestones[$i],
 					'milestones_text' 	=> $milestones_text[$i],
@@ -146,7 +146,7 @@ class admin_controller
 
 			$this->db->sql_query('UPDATE ' . $this->milestones_table . '
 				SET ' . $this->db->sql_build_array('UPDATE', $sql_ary_block) . "
-				WHERE milestones_id =	1"
+				WHERE milestones_id = 1"
 			);
 
 			// Add option settings change action to the admin log
@@ -157,9 +157,10 @@ class admin_controller
 
 		$sql = 'SELECT milestones_enable
 			FROM ' . $this->milestones_table . "
-			WHERE milestones_id =	1";
+			WHERE milestones_id = 1";
 		$result = $this->db->sql_query($sql);
 		$milestones_data = $this->db->sql_fetchrow($result);
+		$this->db->sql_freeresult($result);
 
 		$this->template->assign_vars(array(
 			'U_ACTION'				=> $this->u_action,

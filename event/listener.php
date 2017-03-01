@@ -16,16 +16,10 @@ class listener implements EventSubscriberInterface
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/** @var \phpbb\user */
-	protected $user;
-
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
-	/** @var \phpbb\request\request */
-	protected $request;
-
-	/** @var phpbb\language\language */
+	/** @var \phpbb\language\language */
 	protected $language;
 
 	/** @var string */
@@ -35,24 +29,19 @@ class listener implements EventSubscriberInterface
 	* Constructor
 	*
 	* @param \phpbb\template\template				$template
-	* @param \phpbb\user							$user
 	* @param \phpbb\db\driver\driver_interface 		$db
-	* @param \phpbb\request\request					$request
-	* @param phpbb\language\language				$language
+	* @param \phpbb\language\language				$language
 	* @param string									$milestones_table
 	*/
 	public function __construct(
 		\phpbb\template\template $template,
-		\phpbb\user $user,
 		\phpbb\db\driver\driver_interface $db,
-		\phpbb\request\request $request,
 		\phpbb\language\language $language,
-		$milestones_table)
+		$milestones_table
+	)
 	{
 		$this->template 		= $template;
-		$this->user 			= $user;
 		$this->db 				= $db;
-		$this->request 			= $request;
 		$this->language			= $language;
 		$this->milestones_table = $milestones_table;
 	}
