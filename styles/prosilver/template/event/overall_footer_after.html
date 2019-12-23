@@ -1,14 +1,14 @@
-<!-- IF MILESTONES_ENABLE and S_USER_LOGGED_IN -->
-<!-- INCLUDEJS toggle.js -->
+{% if MILESTONES_ENABLE and S_USER_LOGGED_IN %}
+{% INCLUDEJS 'toggle.js' %}
 
 <script type="text/javascript">
 	var repositories = [
-	<!-- BEGIN milestones -->
-	{"id": "{milestones.MILESTONES_TEXT}", "path": "{milestones.MILESTONES}"},
-	<!-- END milestones -->
+	{% for milestones in loops.milestones %}
+	{"id": "{{ milestones.MILESTONES_TEXT }}", "path": "{{ milestones.MILESTONES }}"},
+	{% endfor %}
 	];
-	var showText = '{LA_MILESTONES_VIEW}';
-	var hideText = '{LA_MILESTONES_HIDE}';
+	var showText = '{{ lang('MILESTONES_VIEW')|escape('js') }}';
+	var hideText = '{{ lang('MILESTONES_HIDE')|escape('js') }}';
 </script>
 
 <script type="text/javascript">
@@ -17,8 +17,8 @@
 		$.each(repositories, function(index, value) {
 			$('#repositories').append(
 				'<li id="'+value.id+'">' +
-					'<h3><i class="icon fa fa-road"></i> '+value.id+' {LA_MILESTONES_TITLE} <small>' +
-						'<a target="_blank" href="https://github.com/'+value.path+'/" title>{LA_MILESTONES_VIA_GITHUB}</a></small> <i class="icon fa fa-github" style="font-size:16px"></i> ' +
+					'<h3><i class="icon fa fa-road"></i> '+value.id+' {{ lang('MILESTONES_TITLE')|escape('js') }} <small>' +
+						'<a target="_blank" href="https://github.com/'+value.path+'/" title>{{ lang('MILESTONES_VIA_GITHUB')|escape('js') }}</a></small> <i class="icon fa fa-github" style="font-size:16px"></i> ' +
 					'</h3>' +
 					'<div class="toggle"><p><ul class="milestones"></ul></p>' +
 				'</li>'
@@ -39,15 +39,15 @@
 				var milestone =
 					'<li>'+
 						'<div id="milestones" class="milestone-content"><div class="row"><div class="col-md-6"><div class="milestone-tab" id="phpbb-milestones"><div class="milestone-container"><div class="table-list table-list-bordered table-list-milestones js-navigation-container js-active-navigation-container"><div class="table-list-item milestone notdue"><div class="table-list-cell milestone-title"><h2 class="milestone-title-link"><a href="'+value.html_url+'">'+value.title+'</a></h2>'+
-						'<div class="milestone-meta"><span class="milestone-meta-item"></i><svg aria-hidden="true"	height="16"	width="14"><i class="icon fa fa-clock-o"></i></svg> {LA_MILESTONES_LAST_UPDATED} '+formatDate(updated)+'</span></div></div>'+
-						'<div class="table-list-cell milestone-progress"><span class="progress-bar progress-bar-small"><span class="progress" style="width:'+progress+'%">&nbsp;</span></span><div class="stats"><div class="stat"><span class="progress-percent">'+progress+'%</span><span class="stat-label">{LA_MILESTONES_COMPLETE}</span></div><div class="stat">'+open+'<span class="stat-label">{LA_MILESTONES_OPEN}</span></div><div class="stat">'+closed+'<span class="stat-label">{LA_MILESTONES_CLOSED}</span></div></div></div>'+
+						'<div class="milestone-meta"><span class="milestone-meta-item"></i><svg aria-hidden="true"	height="16"	width="14"><i class="icon fa fa-clock-o"></i></svg> {{ lang('MILESTONES_LAST_UPDATED')|escape('js') }} '+formatDate(updated)+'</span></div></div>'+
+						'<div class="table-list-cell milestone-progress"><span class="progress-bar progress-bar-small"><span class="progress" style="width:'+progress+'%">&nbsp;</span></span><div class="stats"><div class="stat"><span class="progress-percent">'+progress+'%</span><span class="stat-label">{{ lang('MILESTONES_COMPLETE')|escape('js') }}</span></div><div class="stat">'+open+'<span class="stat-label">{{ lang('MILESTONES_OPEN')|escape('js') }}</span></div><div class="stat">'+closed+'<span class="stat-label">{{ lang('MILESTONES_CLOSED')|escape('js') }}</span></div></div></div>'+
 						'</div></div></div></div></div></div></div>'+
 					'</li>';
 				milestones.append(milestone);
 			});
 		}).done(function() {
 			if(milestones.html() == '')
-				milestones.append('<li>{LA_MILESTONES_NO_REPOSITORY}</li>');
+				milestones.append('<li>{{ lang('MILESTONES_NO_REPOSITORY')|escape('js') }}</li>');
 		});
 	}
 	function formatDate(date) {
@@ -56,4 +56,4 @@
 		return day+'.'+month+'.'+date.getFullYear();
 	}
 </script>
-<!-- ENDIF -->
+{% endif %}

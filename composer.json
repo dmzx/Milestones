@@ -2,26 +2,27 @@
 	"name": "dmzx/milestones",
 	"type": "phpbb-extension",
 	"description": "Adds Milestones to your forum",
-	"homepage": "http://www.dmzx-web.net",
-	"version": "1.0.2",
-	"time": "2017-01-07",
+	"homepage": "https://www.dmzx-web.net",
+	"version": "1.0.3",
+	"time": "2019-12-23",
 	"keywords": [
 		"phpbb",
 		"extension",
 		"milestones"
 	],
-	"license": "GPL-2.0",
+	"license": "GPL-2.0-only",
 	"authors": [
 		{
 			"name": "dmzx",
-			"homepage": "http://www.dmzx-web.net",
+			"homepage": "https://www.dmzx-web.net",
 			"email": "info@dmzx-web.net",
 			"role": "Extension Developer"
 		}
 	],
 	"require": {
 		"php": ">=5.3.3",
-		"phpbb/phpbb": ">=3.2.0-a1,<3.3.0@dev"
+		"composer/installers": "~1.0.0",
+		"phpbb/phpbb": ">=3.2.0,<4.4.0@dev"
 	},
 	"require-dev": {
 		"phpbb/epv": "dev-master"
@@ -29,12 +30,13 @@
 	"extra": {
 		"display-name": "Milestones",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.0-a1,<3.3.0@dev"
+			"phpbb/phpbb": ">=3.2.0,<4.4.0@dev"
 		},
 		"version-check": {
-			"host": "www.dmzx-web.net",
-			"directory": "/versions",
-			"filename": "milestones_32x_version.json"
+			"host": "www.phpbb.com",
+			"directory": "/customise/db/extension/milestones",
+			"filename": "version_check",
+			"ssl": true
 		}
 	}
 }

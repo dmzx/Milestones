@@ -1,45 +1,45 @@
-<!-- INCLUDE overall_header.html -->
+{% INCLUDE 'overall_header.html' %}
 
-<h1>{L_ACP_MILESTONES_TITLE}</h1>
+<h1><i class="icon fa fa-road" aria-hidden="true"></i> {{ lang('ACP_MILESTONES_TITLE') }}</h1>
 
-{L_MILESTONES_VERSION}{L_COLON} <em>{MILESTONES_VERSION}</em>
+<p><img src="https://img.shields.io/badge/{{ lang('MILESTONES_VERSION') }}-{{ MILESTONES_VERSION }}-green.svg?style=plastic" /></p>
 
-<form id="acp_milestones" method="post" action="{U_ACTION}">
+<form id="acp_milestones" method="post" action="{{ U_ACTION }}">
 	<fieldset>
-		<legend>{L_ACP_MILESTONES_CONFIG}</legend>
+		<legend><i class="icon fa-wrench fa-lg" aria-hidden="true"></i> {{ lang('ACP_MILESTONES_CONFIG') }}</legend>
 		<dl>
 			<dt>
-				<label for="milestones_enable">{L_MILESTONES_ENABLE}{L_COLON}</label><br />
-				<span>{L_MILESTONES_ENABLE_EXPLAIN}</span>
+				<label for="milestones_enable">{{ lang('MILESTONES_ENABLE') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('MILESTONES_ENABLE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" id="milestones_enable" name="milestones_enable" value="1" <!-- IF MILESTONES_ENABLE -->checked="checked"<!-- ENDIF -->/> {L_YES}</label>
-				<label><input type="radio" class="radio" name="milestones_enable" value="0" <!-- IF not MILESTONES_ENABLE -->checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+				<label><input type="radio" class="radio" id="milestones_enable" name="milestones_enable" value="1" {% if MILESTONES_ENABLE %}checked="checked"{% endif %}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="milestones_enable" value="0" {% if not MILESTONES_ENABLE %}checked="checked"{% endif %} /> {{ lang('NO') }}</label>
 			</dd>
 		</dl>
 		<dl>
 			<dt>
-				<label>{L_MILESTONES_REPOSITORY}{L_COLON}</label><br />
-				<span>{L_MILESTONES_REPOSITORY_EXPLAIN}</span>
+				<label>{{ lang('MILESTONES_REPOSITORY') }}{{ lang('COLON') }}</label><br />
+				<span>{{ lang('MILESTONES_REPOSITORY_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<b>{L_MILESTONES_REPOSITORY} <span style="margin-left:190px;">{L_MILESTONES_REPOSITORY_TEXT}</span></b>
-				<!-- BEGIN milestones -->
+				<b>{{ lang('MILESTONES_REPOSITORY') }} <span style="margin-left:190px;">{{ lang('MILESTONES_REPOSITORY_TEXT') }}</span></b>
+				{% for milestones in loops.milestones %}
 				<p id="milestones">
-					<input name="milestones[]" type="text" value="{milestones.MILESTONES}" size="40" placeholder="{L_MILESTONES_PLACEHOLDER}">
-					<input name="milestones_text[]" type="text" value="{milestones.MILESTONES_TEXT}" size="30" placeholder="{L_MILESTONES_PLACEHOLDER_NAME}">
+					<input name="milestones[]" type="text" value="{{ milestones.MILESTONES }}" size="40" placeholder="{{ lang('MILESTONES_PLACEHOLDER') }}">
+					<input name="milestones_text[]" type="text" value="{{ milestones.MILESTONES_TEXT }}" size="30" placeholder="{{ lang('MILESTONES_PLACEHOLDER_NAME') }}">
 				</p>
-				<!-- END milestones -->
+				{% endfor %}
 				<dd>
-					<input value="{L_MILESTONES_MORE_LINKS}" onclick="add_this('milestones')" type="button">
+					<input value="{{ lang('MILESTONES_MORE_LINKS') }}" onclick="add_this('milestones')" type="button">
 				</dd>
 			</dd>
 		</dl>
 	</fieldset>
 	<p class="submit-buttons">
-		{S_FORM_TOKEN}
-		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
-		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		{{ S_FORM_TOKEN }}
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
 	</p>
 </form>
 
@@ -53,4 +53,4 @@ function add_this(id)
 }
 </script>
 
-<!-- INCLUDE overall_footer.html -->
+{% INCLUDE 'overall_footer.html' %}
