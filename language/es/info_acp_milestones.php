@@ -14,7 +14,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 // DEVELOPERS PLEASE NOTE
 //
@@ -32,9 +32,9 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MILESTONES_TITLE'				=> 'Hitos',
 	'ACP_MILESTONES_CONFIG'				=> 'Ajustes',
 	// Log
 	'LOG_MILESTONES_SAVE'				=> '<strong>Ajustes de Hitos cambiados</strong>' ,
-));
+]);

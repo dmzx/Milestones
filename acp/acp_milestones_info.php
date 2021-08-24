@@ -13,12 +13,12 @@ class acp_milestones_info
 {
 	function module()
 	{
-		return array(
+		return [
 			'filename'	=> '\dmzx\milestones\acp\acp_milestones_module',
 			'title'		=> 'ACP_MILESTONES_TITLE',
-			'modes'		=> array(
-				'settings'	=> array('title' => 'ACP_MILESTONES_CONFIG', 'auth' => 'ext_dmzx/milestones && acl_a_board', 'cat'	=> array('ACP_MILESTONES_CONFIG')),
-			),
-		);
+			'modes'		=> [
+				'settings'	=> ['title' => 'ACP_MILESTONES_CONFIG', 'auth' => 'ext_dmzx/milestones && acl_a_board', 'cat'	=> ['ACP_MILESTONES_CONFIG']],
+			],
+		];
 	}
 }

@@ -14,7 +14,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 // DEVELOPERS PLEASE NOTE
 //
@@ -32,7 +32,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'MILESTONES_ENABLE'					=> 'Enable Milestones',
 	'MILESTONES_ENABLE_EXPLAIN'			=> 'Enable milestones on index.',
 	'MILESTONES_PLACEHOLDER'			=> 'phpbb/phpbb',
@@ -43,4 +43,4 @@ $lang = array_merge($lang, array(
 	'MILESTONES_MORE_LINKS'				=> 'Add repository',
 	'MILESTONES_SAVED'					=> 'Milestones settings saved',
 	'MILESTONES_VERSION'				=> 'Version',
-));
+]);

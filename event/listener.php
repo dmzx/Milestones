@@ -51,9 +51,9 @@ class listener implements EventSubscriberInterface
 
 	public static function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.page_header' => 'page_header',
-		);
+		];
 	}
 
 	public function page_header($event)
@@ -67,18 +67,18 @@ class listener implements EventSubscriberInterface
 
 		if ($row['milestones_enable'])
 		{
-			$this->template->assign_vars(array(
+			$this->template->assign_vars([
 				'MILESTONES_ENABLE'	=> $row['milestones_enable'],
-			));
+			]);
 
 			while ($row = $this->db->sql_fetchrow($result))
 			{
 				if (!empty($row['milestones']))
 				{
-					$this->template->assign_block_vars('milestones', array(
+					$this->template->assign_block_vars('milestones', [
 						'MILESTONES'		=> $row['milestones'],
 						'MILESTONES_TEXT'	=> $row['milestones_text'],
-					));
+					]);
 				}
 			}
 		}

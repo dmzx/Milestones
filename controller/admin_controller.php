@@ -99,19 +99,19 @@ class admin_controller
 		{
 			if (!empty($row['milestones']))
 			{
-				$this->template->assign_block_vars('milestones', array(
+				$this->template->assign_block_vars('milestones', [
 					'MILESTONES'		=> $row['milestones'],
 					'MILESTONES_TEXT'	=> $row['milestones_text'],
-				));
+				]);
 			}
 		}
 		$this->db->sql_freeresult($result);
 
 		if (empty($row['milestones']))
 		{
-			$this->template->assign_block_vars('milestones', array(
+			$this->template->assign_block_vars('milestones', [
 				'MILESTONES' => '',
-			));
+			]);
 		}
 
 		// Is the form being submitted to us?
@@ -126,31 +126,31 @@ class admin_controller
 
 			if (!$row['milestones_id'])
 			{
-				$sql_arr_id = array(
+				$sql_arr_id = [
 					'milestones_id' => '1',
-				);
+				];
 				$sql = 'INSERT INTO ' . $this->milestones_table . ' ' . $this->db->sql_build_array('INSERT', $sql_arr_id);
 				$this->db->sql_query($sql);
 			}
 
-			$milestones 		= $this->request->variable('milestones', array('' => ''),true);
-			$milestones_text 	= $this->request->variable('milestones_text', array('' => ''),true);
+			$milestones 		= $this->request->variable('milestones', ['' => ''],true);
+			$milestones_text 	= $this->request->variable('milestones_text', ['' => ''],true);
 			$milestones			= array_filter($milestones);
 
 			$i = 0;
 			while ($i < count($milestones))
 			{
-				$sql_ary1 = array(
+				$sql_ary1 = [
 					'milestones' 		=> $milestones[$i],
 					'milestones_text' 	=> $milestones_text[$i],
-				);
+				];
 				$this->db->sql_multi_insert($this->milestones_table, $sql_ary1);
 				$i++;
 			}
 
-			$sql_ary_block = array(
+			$sql_ary_block = [
 				'milestones_enable' => $this->request->variable('milestones_enable', ''),
-			);
+			];
 
 			$this->db->sql_query('UPDATE ' . $this->milestones_table . '
 				SET ' . $this->db->sql_build_array('UPDATE', $sql_ary_block) . "
@@ -170,11 +170,11 @@ class admin_controller
 		$milestones_data = $this->db->sql_fetchrow($result);
 		$this->db->sql_freeresult($result);
 
-		$this->template->assign_vars(array(
+		$this->template->assign_vars([
 			'U_ACTION'				=> $this->u_action,
 			'MILESTONES_ENABLE'		=> $milestones_data['milestones_enable'],
 			'MILESTONES_VERSION'	=> $this->config['milestones_version'],
-		));
+		]);
 	}
 
 	/**

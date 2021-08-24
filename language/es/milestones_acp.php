@@ -14,7 +14,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 // DEVELOPERS PLEASE NOTE
 //
@@ -32,7 +32,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'MILESTONES_ENABLE'					=> 'Habilitar Hitos',
 	'MILESTONES_ENABLE_EXPLAIN'			=> 'Habilitar Hitos en el índice',
 	'MILESTONES_PLACEHOLDER'			=> 'phpbb/phpbb',
@@ -43,4 +43,4 @@ $lang = array_merge($lang, array(
 	'MILESTONES_MORE_LINKS'				=> 'Añadir repositorio',
 	'MILESTONES_SAVED'					=> 'Ajustes de Hitos guardados',
 	'MILESTONES_VERSION'				=> 'Versión',
-));
+]);

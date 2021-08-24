@@ -15,15 +15,15 @@ class milestones_v102 extends migration
 {
 	static public function depends_on()
 	{
-		return array(
+		return [
 			'\dmzx\milestones\migrations\milestones_install',
-		);
+		];
 	}
 
 	public function update_data()
 	{
-		return array(
-			array('config.update', array('milestones_version', '1.0.2')),
-		);
+		return [
+			['config.update', ['milestones_version', '1.0.2']],
+		];
 	}
 }

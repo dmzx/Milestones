@@ -14,7 +14,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 // DEVELOPERS PLEASE NOTE
 //
@@ -32,7 +32,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'MILESTONES_TITLE'					=> 'Hitos',
 	'MILESTONES_VIA_GITHUB'				=> 'vía Github',
 	'MILESTONES_LAST_UPDATED'			=> 'Última actualización',
@@ -42,4 +42,4 @@ $lang = array_merge($lang, array(
 	'MILESTONES_VIEW' 					=> '»» Ver »»',
 	'MILESTONES_HIDE' 					=> '&nbsp;«« Ocultar ««',
 	'MILESTONES_NO_REPOSITORY' 			=> 'No hay hitos definidos en este repositorio',
-));
+]);

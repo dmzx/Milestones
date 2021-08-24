@@ -14,7 +14,7 @@ if (!defined('IN_PHPBB'))
 
 if (empty($lang) || !is_array($lang))
 {
-	$lang = array();
+	$lang = [];
 }
 // DEVELOPERS PLEASE NOTE
 //
@@ -32,9 +32,9 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 
-$lang = array_merge($lang, array(
+$lang = array_merge($lang, [
 	'ACP_MILESTONES_TITLE'				=> 'Meilensteine',
 	'ACP_MILESTONES_CONFIG'				=> 'Einstellungen',
 	// Log
 	'LOG_MILESTONES_SAVE'				=> '<strong>Meilensteine-Einstellungen geändert</strong>' ,
-));
+]);
