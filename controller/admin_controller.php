@@ -124,7 +124,7 @@ class admin_controller
 
 			$this->db->sql_query('DELETE FROM ' . $this->milestones_table);
 
-			if (!$row['milestones_id'])
+			if (isset($row['milestones_id']) !== null)
 			{
 				$sql_arr_id = [
 					'milestones_id' => '1',
