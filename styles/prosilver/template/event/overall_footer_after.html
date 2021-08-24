@@ -1,7 +1,7 @@
 {% if MILESTONES_ENABLE and S_USER_LOGGED_IN %}
 {% INCLUDEJS 'toggle.js' %}
 
-<script type="text/javascript">
+<script>
 	var repositories = [
 	{% for milestones in loops.milestones %}
 	{"id": "{{ milestones.MILESTONES_TEXT }}", "path": "{{ milestones.MILESTONES }}"},
@@ -11,7 +11,7 @@
 	var hideText = '{{ lang('MILESTONES_HIDE')|escape('js') }}';
 </script>
 
-<script type="text/javascript">
+<script>
 	loadRepositories(repositories);
 	function loadRepositories(repositories) {
 		$.each(repositories, function(index, value) {
