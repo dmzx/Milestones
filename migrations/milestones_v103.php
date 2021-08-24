@@ -9,7 +9,9 @@
 
 namespace dmzx\milestones\migrations;
 
-class milestones_v103 extends \phpbb\db\migration\migration
+use phpbb\db\migration\migration;
+
+class milestones_v103 extends migration
 {
 	static public function depends_on()
 	{

@@ -9,17 +9,20 @@
 
 namespace dmzx\milestones\event;
 
+use phpbb\db\driver\driver_interface;
+use phpbb\language\language;
+use phpbb\template\template;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\db\driver\driver_interface */
+	/** @var driver_interface */
 	protected $db;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
 	/** @var string */
@@ -28,15 +31,15 @@ class listener implements EventSubscriberInterface
 	/**
 	* Constructor
 	*
-	* @param \phpbb\template\template				$template
-	* @param \phpbb\db\driver\driver_interface 		$db
-	* @param \phpbb\language\language				$language
-	* @param string									$milestones_table
+	* @param template				$template
+	* @param driver_interface 		$db
+	* @param language				$language
+	* @param string					$milestones_table
 	*/
 	public function __construct(
-		\phpbb\template\template $template,
-		\phpbb\db\driver\driver_interface $db,
-		\phpbb\language\language $language,
+		template $template,
+		driver_interface $db,
+		language $language,
 		$milestones_table
 	)
 	{
@@ -76,7 +79,7 @@ class listener implements EventSubscriberInterface
 						'MILESTONES'		=> $row['milestones'],
 						'MILESTONES_TEXT'	=> $row['milestones_text'],
 					));
-				};
+				}
 			}
 		}
 		$this->db->sql_freeresult($result);

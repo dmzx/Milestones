@@ -9,10 +9,12 @@
 
 namespace dmzx\milestones;
 
+use phpbb\extension\base;
+
 /**
 * Extension class for custom enable/disable/purge actions
 */
-class ext extends \phpbb\extension\base
+class ext extends base
 {
 	/**
 	* Enable extension if phpBB version requirement is met

@@ -9,27 +9,35 @@
 
 namespace dmzx\milestones\controller;
 
+use phpbb\config\config;
+use phpbb\db\driver\driver_interface;
+use phpbb\language\language;
+use phpbb\log\log_interface;
+use phpbb\request\request;
+use phpbb\template\template;
+use phpbb\user;
+
 class admin_controller
 {
-	/** @var \phpbb\config\config */
+	/** @var config */
 	protected $config;
 
-	/** @var \phpbb\template\template */
+	/** @var template */
 	protected $template;
 
-	/** @var \phpbb\log\log_interface */
+	/** @var log_interface */
 	protected $log;
 
-	/** @var \phpbb\user */
+	/** @var user */
 	protected $user;
 
-	/** @var \phpbb\db\driver\driver_interface */
+	/** @var driver_interface */
 	protected $db;
 
-	/** @var \phpbb\request\request */
+	/** @var request */
 	protected $request;
 
-	/** @var \phpbb\language\language */
+	/** @var language */
 	protected $language;
 
 	/** @var string */
@@ -41,23 +49,23 @@ class admin_controller
 	/**
 	 * Constructor
 	 *
-	 * @param \phpbb\config\config					$config
-	 * @param \phpbb\template\template				$template
-	 * @param \phpbb\log\log_interface				$log
-	 * @param \phpbb\user							$user
-	 * @param \phpbb\db\driver\driver_interface		$db
-	 * @param \phpbb\request\request				$request
-	 * @param \phpbb\language\language				$language
-	 * @param string								$milestones_table
+	 * @param config				$config
+	 * @param template				$template
+	 * @param log_interface			$log
+	 * @param user					$user
+	 * @param driver_interface		$db
+	 * @param request				$request
+	 * @param language				$language
+	 * @param string				$milestones_table
 	 */
 	public function __construct(
-		\phpbb\config\config $config,
-		\phpbb\template\template $template,
-		\phpbb\log\log_interface $log,
-		\phpbb\user $user,
-		\phpbb\db\driver\driver_interface $db,
-		\phpbb\request\request $request,
-		\phpbb\language\language $language,
+		config $config,
+		template $template,
+		log_interface $log,
+		user $user,
+		driver_interface $db,
+		request $request,
+		language $language,
 		$milestones_table
 	)
 	{
@@ -95,8 +103,8 @@ class admin_controller
 					'MILESTONES'		=> $row['milestones'],
 					'MILESTONES_TEXT'	=> $row['milestones_text'],
 				));
-			};
-		};
+			}
+		}
 		$this->db->sql_freeresult($result);
 
 		if (empty($row['milestones']))
@@ -104,7 +112,7 @@ class admin_controller
 			$this->template->assign_block_vars('milestones', array(
 				'MILESTONES' => '',
 			));
-		};
+		}
 
 		// Is the form being submitted to us?
 		if ($this->request->is_set_post('submit'))
@@ -123,7 +131,7 @@ class admin_controller
 				);
 				$sql = 'INSERT INTO ' . $this->milestones_table . ' ' . $this->db->sql_build_array('INSERT', $sql_arr_id);
 				$this->db->sql_query($sql);
-			};
+			}
 
 			$milestones 		= $this->request->variable('milestones', array('' => ''),true);
 			$milestones_text 	= $this->request->variable('milestones_text', array('' => ''),true);
