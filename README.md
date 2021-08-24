@@ -1,6 +1,6 @@
 # Milestones Extension
 
-[![Build Status](https://travis-ci.org/dmzx/Milestones.svg?branch=master)](https://travis-ci.org/dmzx/Milestones)
+[![Build Status](https://github.com/dmzx/Milestones/workflows/Tests/badge.svg)](https://github.com/phpbb-extensions/dmzx/Milestones)
 
 ## Install
 1. Download the latest release.
