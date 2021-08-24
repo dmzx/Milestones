@@ -1,8 +1,8 @@
 imports:
-    - { resource: tables.yml }
+    - { resource: 'tables.yml' }
 services:
     dmzx.milestones.admin.controller:
-        class: dmzx\milestones\controller\admin_controller
+        class: 'dmzx\milestones\controller\admin_controller'
         arguments:
             - '@config'
             - '@template'
@@ -13,11 +13,11 @@ services:
             - '@language'
             - '%tables.milestones_table%'
     dmzx.milestones.listener:
-        class: dmzx\milestones\event\listener
+        class: 'dmzx\milestones\event\listener'
         arguments:
             - '@template'
             - '@dbal.conn'
             - '@language'
             - '%tables.milestones_table%'
         tags:
-            - { name: event.listener }
+            - { name: 'event.listener' }
