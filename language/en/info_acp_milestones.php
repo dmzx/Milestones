@@ -36,5 +36,5 @@ $lang = array_merge($lang, [
 	'ACP_MILESTONES_TITLE'				=> 'Milestones',
 	'ACP_MILESTONES_CONFIG'				=> 'Settings',
 	// Log
-	'LOG_MILESTONES_SAVE'				=> '<strong>Settings Milestones changed</strong>' ,
+	'LOG_MILESTONES_SAVE'				=> '<strong>Settings Milestones changed</strong>',
 ]);
